@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Auto Otp",
+  "description": "This Extension automates the authentication",
+  "version": "1.0",
+  "permissions": ["tabs", "scripting"],
+  "action": {
+    "default_title": "Automaing the authentication using the OTP",
+    "default_icon": "images/icon.png",
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "background": {
+    "matches": ["https://github.com/*"],
+    "service_worker": "background.js",
+    "type": "module"
+  }
+}
