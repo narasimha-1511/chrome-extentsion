@@ -11,3 +11,21 @@ document.getElementById("savee").addEventListener("click", () => {
     }
   );
 });
+
+chrome.storage.local.get(["mobile"]).then((result) => {
+  console.log("Value currently is " + result.mobile);
+  document.getElementById("mobile").value = result.mobile;
+});
+
+savee.addEventListener("click", () => {
+  chrome.storage.local
+    .set({ mobile: document.getElementById("mobile").value })
+    .then(() => {
+      console.log("Mobile is set");
+    });
+  chrome.storage.sync
+    .set({ otp: document.getElementById("otp").value })
+    .then(() => {
+      console.log("Otp is set");
+    });
+});
